@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ODTÜ ROBOT</title>
+    <meta charset="utf-8">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            padding: 2em;
+            border: 3px black solid;
+        }
+        
+        #free,
+        .highlight {
+            background-color: rgb(9, 60, 73);
+        }
+        
+        .cell {
+            background-color: rgb(24, 161, 109);
+        }
+        
+        .site-header {
+            width: 28.5em;
+            padding: 20px;
+            background: #00a3ef;
+            background: -moz-linear-gradient(top, #00a3ef 0%, #0b4182 100%);
+            background: -webkit-linear-gradient(top, #00a3ef 0%, #0b4182 100%);
+            background: linear-gradient(to bottom, #00a3ef 0%, #0b4182 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00a3ef', endColorstr='#0b4182', GradientType=0);
+        }
+    </style>
+</head>
+
+<body onload="randomNumbers()">
+    <h1 class="site-header">ODTÜ ROBOT TOPLULUĞU TOMBALA ETKİNLİĞİ</h1>
+    <table id="table">
+        <tr style="font-size: 20px;font-weight: bold;">
+            <td style="background-color: rgb(39, 165, 91);">T</td>
+            <td style="background-color: rgb(39, 165, 91);">O</td>
+            <td style="background-color: rgb(39, 165, 91);">M</td>
+            <td style="background-color: rgb(39, 165, 91);">B</td>
+            <td style="background-color: rgb(39, 165, 91);">A</td>
+            <td style="background-color: rgb(39, 165, 91);">L</td>
+            <td style="background-color: rgb(39, 165, 91);">A</td>
+            <td style="width: 11%; background-color: rgb(39, 165, 91);"></td>
+            <td style="background-color: rgb(39, 165, 91);">ORT</td>
+        </tr>
+        <tr style="font-size: 20px;font-weight: bold;">
+            <td id="s0"></td>
+            <td class="cell"></td>
+            <td id="s3"></td>
+            <td class="cell"></td>
+            <td id="s6"></td>
+            <td class="cell"></td>
+            <td id="s9"></td>
+            <td id="s11"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr style="font-size: 20px;font-weight: bold;">
+            <td class="cell"></td>
+            <td id="s2"></td>
+            <td class="cell"></td>
+            <td id="s5"></td>
+            <td class="cell"></td>
+            <td id="s8"></td>
+            <td class="cell"></td>
+            <td id="s12"></td>
+            <td id="s13"></td>
+        </tr>
+        <tr style="font-size: 20px;font-weight: bold;">
+            <td id="s1"></td>
+            <td class="cell"></td>
+            <td id="s4"></td>
+            <td class="cell"></td>
+            <td id="s7"></td>
+            <td class="cell"></td>
+            <td id="s10"></td>
+            <td class="cell"></td>
+            <td id="s14"></td>
+        </tr>
+
+    </table>
+
+    <script>
+        //highlight
+        table.onclick = function(e) {
+            let target = e.target; // where was the click
+            highlight(e.target);
+
+        };
+
+        function highlight(x) {
+            x.classList.toggle('highlight');
+        }
+
+
+
+        //Random Number
+        function randomNumbers() {
+            var n = new Array(15);
+            var num = new Array(15);
+            var i = 0;
+            while (i < 15) {
+                if (i == 0 || i == 1) {
+                    var randomNumber = Math.floor(Math.random() * 9) + 1;
+                }
+                if (i == 2) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 10;
+                }
+                if (i == 3 || i == 4) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 20;
+                }
+                if (i == 5) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 30;
+                }
+                if (i == 6 || i == 7) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 40;
+                }
+                if (i == 8) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 50;
+                }
+                if (i == 9 || i == 10) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 60;
+                }
+                if (i == 11 || i == 12) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 70;
+                }
+                if (i == 13 || i == 14) {
+                    var randomNumber = Math.floor(Math.random() * 10) + 80;
+
+                }
+                if (num.indexOf(randomNumber) === -1) {
+                    num[i] = randomNumber;
+                    i = i + 1;
+                }
+            }
+
+
+
+
+            return num;
+
+        }
+        let arrayt = randomNumbers();
+
+
+        //kutulara yazdırmak için
+        for (i = 0; i < arrayt.length; i++) {
+            document.getElementById("s" + i.toString()).innerHTML = arrayt[i];
+        }
+
+
+
+
+
+
+        function color() {
+            var renk1 = Math.floor(Math.random() * 256);
+
+            var renk2 = Math.floor(Math.random() * 256);
+
+            var renk3 = Math.floor(Math.random() * 256);
+
+            var finalrenk = "rgb(" + renk1 + "," + renk2 + "," + renk3 + ")";
+
+
+            return finalrenk;
+
+        }
+        var rgb = color();
+        var x = document.getElementsByClassName('cell');
+
+
+        for (d = 0; d < 12; d++) {
+            x[d].style.background = rgb;
+        }
+
+        //x[0].style.background = rgb;
+    </script>
+
+
+</body>
